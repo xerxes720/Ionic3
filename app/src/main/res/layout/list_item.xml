@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/list_item_recycler"
+    android:gravity="left"
+    android:layout_height="150dp">
+    
+    <ImageView
+        android:layout_width="80dp"
+        android:padding="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="80dp"
+        android:id="@+id/calender_image_small"
+        android:background="@drawable/calender" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_text_view_recycler"
+        android:padding="10dp"
+        android:layout_toEndOf="@id/calender_image_small"
+        android:layout_toRightOf="@id/calender_image_small"
+        android:text="Dinner with someone"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assigned to: "
+        android:padding="10dp"
+        android:id="@+id/assign_id"
+        android:layout_below="@id/title_text_view_recycler"
+        android:layout_toRightOf="@id/calender_image_small"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/task_type"
+        android:padding="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/assign_id"
+        android:layout_marginRight="10dp"
+        android:text="Lunch"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:layout_marginRight="10dp"
+        android:padding="2dp"
+        android:id="@+id/task_status"
+        android:layout_below="@id/task_type"
+        android:layout_alignParentRight="true"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:background="@drawable/closed_task"/>
+</RelativeLayout>
