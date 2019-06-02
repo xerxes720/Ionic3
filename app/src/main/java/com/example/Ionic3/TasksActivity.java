@@ -5,6 +5,8 @@ import android.drm.DrmStore;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +55,14 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
 
         NavigationView nv = findViewById(R.id.nv);
         nv.setNavigationItemSelectedListener(this);
+
+        ImageButton IB = findViewById(R.id.add_task);
+        IB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TasksActivity.this , newTask.class));
+            }
+        });
 
     }
     @Override

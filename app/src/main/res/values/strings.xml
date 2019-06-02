@@ -16,7 +16,8 @@
     <string name="Task" />
     <string name="profile">Profile</string>
     <string name="task">Task</string>
-    <string name="lock">Lock</string>
+    <string name="change_password">Change Password</string>
     <string name="logout">Logout</string>
     <string name="menu">Menu</string>
+    <string name="dashboard">Dashboard</string>
 </resources>
