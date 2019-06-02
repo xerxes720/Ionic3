@@ -10,12 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
 
-    private MyListData[] listData;
+    //    private MyListData[] listData;
+    private ArrayList<MyListData> listData;
 
 
-    public MyListAdapter(MyListData[] listData) {
+    public MyListAdapter(ArrayList<MyListData> listData) {
         this.listData = listData;
     }
 
@@ -38,7 +41,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return listData.length;
+        return listData.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
