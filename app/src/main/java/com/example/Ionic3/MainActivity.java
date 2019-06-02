@@ -1,5 +1,6 @@
 package com.example.Ionic3;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.view.GravityCompat;
@@ -74,9 +75,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_tasks) {
 
+        } else if (id == R.id.nav_tasks) {
+            startActivity(new Intent(this,TasksActivity.class));
+            return true;
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_password) {

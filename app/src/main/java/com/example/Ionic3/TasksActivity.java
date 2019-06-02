@@ -1,7 +1,9 @@
 package com.example.Ionic3;
 
+import android.content.Intent;
 import android.drm.DrmStore;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,16 +26,11 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = findViewById(R.id.tasks_toolbar);
 //        setSupportActionBar(toolbar);
 
-        DrawerLayout dl = findViewById(R.id.tasks);
+        DrawerLayout dl = findViewById(R.id.tasks_drawer);
         ActionBarDrawerToggle t = new ActionBarDrawerToggle(this, dl,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
 
         dl.addDrawerListener(t);
         t.syncState();
-
-
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         ArrayList<MyListData> listData = new ArrayList<>();
 
@@ -42,7 +39,6 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
         listData.add(new MyListData("MyTask3","Her",3));
         listData.add(new MyListData("MyTask4","We",4));
         listData.add(new MyListData("MyTask5","You",5));
-
 
 
         RecyclerView recyclerView = findViewById(R.id.tasks_recycler_view);
@@ -55,6 +51,8 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
         myAdapter = new MyListAdapter(listData);
         recyclerView.setAdapter(myAdapter);
 
+        NavigationView nv = findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(this);
 
     }
     @Override
@@ -63,7 +61,7 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            startActivity(new Intent(this,MainActivity.class));
         } else if (id == R.id.nav_tasks) {
 
         } else if (id == R.id.nav_profile) {
@@ -74,7 +72,7 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.tasks_drawer);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
