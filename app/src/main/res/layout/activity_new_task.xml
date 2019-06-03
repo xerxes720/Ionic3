@@ -1,94 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
+    >
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:gravity="center|top"
-        >
-        <com.google.android.material.appbar.AppBarLayout
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/app_bar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            android:id="@+id/app_bar">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tasks_toolbar"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/back"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_arrow_back_white"
+                android:layout_margin="15dp"/>
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/blue"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_arrow_back_white"
-                    android:layout_margin="15dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Dinner with..."
-                    android:textSize="20sp"/>
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <ImageView
-            android:id="@+id/calender_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/app_bar"
-            android:layout_centerInParent="true"
-            android:background="@drawable/calender"
-            android:scaleX="0.8"
-            android:scaleY="0.8"/>
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/task_name_text_view"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/calender_image"
-            android:orientation="horizontal"
-            android:background="@drawable/linear_layout_border"
-            android:layout_centerInParent="true"
-            android:padding="10dp">
-
-            <EditText
-                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:hint="Types of task..."
-                android:layout_marginRight="20dp" />
-            <Spinner
-                android:layout_width="24dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:textColor="@color/white"
+                android:text="Dinner with..."
+                android:textSize="20sp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/linear2"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/task_name_text_view"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:weightSum="100"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/app_bar"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top">
+            <ImageView
+                android:id="@+id/calender_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/calender"
+                android:scaleX="0.8"
+                android:scaleY="0.8"/>
 
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="350dp"
+                android:id="@+id/task_name_text_view"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/calender_image"
                 android:orientation="horizontal"
-                android:layout_weight="50"
                 android:background="@drawable/linear_layout_border"
+                android:layout_centerInParent="true"
                 android:padding="10dp">
 
                 <EditText
-                    android:layout_width="130dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint="Periodic"
+                    android:hint="Types of task..."
                     android:layout_marginRight="20dp" />
                 <Spinner
                     android:layout_width="24dp"
@@ -96,154 +72,183 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="350dp"
+                android:id="@+id/linear2"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/task_name_text_view"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:weightSum="100"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="50"
+                    android:background="@drawable/linear_layout_border"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Periodic"
+                        android:layout_marginRight="20dp" />
+                    <Spinner
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="50"
+                    android:background="@drawable/linear_layout_border"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Reminder"
+                        android:layout_marginRight="20dp" />
+                    <Spinner
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:id="@+id/title_text_view"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear2"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                android:layout_weight="50"
                 android:background="@drawable/linear_layout_border"
+                android:layout_centerInParent="true"
                 android:padding="10dp">
 
                 <EditText
-                    android:layout_width="130dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint="Reminder"
+                    android:hint="Title"
                     android:layout_marginRight="20dp" />
                 <Spinner
                     android:layout_width="24dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/title_text_view"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear2"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/linear_layout_border"
-            android:layout_centerInParent="true"
-            android:padding="10dp">
-
-            <EditText
-                android:layout_width="300dp"
+            <LinearLayout
+                android:layout_width="350dp"
+                android:id="@+id/linear3"
                 android:layout_height="wrap_content"
-                android:hint="Title"
-                android:layout_marginRight="20dp" />
-            <Spinner
-                android:layout_width="24dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_below="@id/title_text_view"
+                android:layout_centerInParent="true"
+                android:weightSum="150"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/linear3"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_text_view"
-            android:layout_centerInParent="true"
-            android:weightSum="150"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="50"
+                    android:background="@drawable/linear_layout_border"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:hint=" " />
+                    <Spinner
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="50"
+                    android:background="@drawable/linear_layout_border"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:hint=" " />
+                    <Spinner
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="50"
+                    android:background="@drawable/linear_layout_border"
+                    android:padding="10dp">
+
+                    <EditText
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:hint=" " />
+                    <Spinner
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="350dp"
+                android:id="@+id/linear4"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/linear3"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                android:layout_weight="50"
                 android:background="@drawable/linear_layout_border"
+                android:layout_centerInParent="true"
                 android:padding="10dp">
 
                 <EditText
-                    android:layout_width="90dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint=" " />
+                    android:hint="Details"
+                    android:layout_marginRight="20dp" />
                 <Spinner
                     android:layout_width="24dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="350dp"
+                android:id="@+id/linear5"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/linear4"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                android:layout_weight="50"
                 android:background="@drawable/linear_layout_border"
+                android:layout_centerInParent="true"
                 android:padding="10dp">
 
                 <EditText
-                    android:layout_width="90dp"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:hint=" " />
+                    android:hint="Assigned to :"
+                    android:layout_marginRight="20dp" />
                 <Spinner
                     android:layout_width="24dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="50"
-                android:background="@drawable/linear_layout_border"
-                android:padding="10dp">
 
-                <EditText
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:hint=" " />
-                <Spinner
-                    android:layout_width="24dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/linear4"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear3"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/linear_layout_border"
-            android:layout_centerInParent="true"
-            android:padding="10dp">
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Details"
-                android:layout_marginRight="20dp" />
-            <Spinner
-                android:layout_width="24dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:id="@+id/linear5"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linear4"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/linear_layout_border"
-            android:layout_centerInParent="true"
-            android:padding="10dp">
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Assigned to :"
-                android:layout_marginRight="20dp" />
-            <Spinner
-                android:layout_width="24dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-
-    </RelativeLayout>
-</ScrollView>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

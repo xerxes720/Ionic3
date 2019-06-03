@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_tasks) {
             startActivity(new Intent(this,TasksActivity.class));
-            return true;
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_password) {
