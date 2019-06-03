@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
 
     //    private MyListData[] listData;
-    private ArrayList<MyListData> listData;
+    public ArrayList<MyListData> listData;
 
 
     public MyListAdapter(ArrayList<MyListData> listData) {

@@ -2,6 +2,7 @@ package com.example.Ionic3;
 
 import android.content.Intent;
 import android.drm.DrmStore;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +23,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 public class TasksActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    MyListAdapter myAdapter;
+    SwipeController swipeController = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +50,9 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
 
 
         RecyclerView recyclerView = findViewById(R.id.tasks_recycler_view);
-        RecyclerView.Adapter myAdapter;
+
         RecyclerView.LayoutManager layoutManager;
+
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -64,6 +71,50 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
+        SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
+            @Override
+            public void onDeleteClicked(int position) {
+                myAdapter.listData.remove(position);
+                myAdapter.notifyItemRemoved(position);
+                myAdapter.notifyItemRangeChanged(position, myAdapter.getItemCount());
+            }
+
+            @Override
+            public void onEditClicked(int position) {
+                super.onEditClicked(position);
+            }
+        });
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+        setupRecyclerView();
+
+    }
+
+    private void setupRecyclerView() {
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.tasks_recycler_view);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, recyclerView.VERTICAL, false));
+        recyclerView.setAdapter(myAdapter);
+
+        swipeController = new SwipeController(new SwipeControllerActions() {
+            @Override
+            public void onDeleteClicked(int position) {
+                myAdapter.listData.remove(position);
+                myAdapter.notifyItemRemoved(position);
+                myAdapter.notifyItemRangeChanged(position, myAdapter.getItemCount());
+            }
+        });
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                swipeController.onDraw(c);
+            }
+        });
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
