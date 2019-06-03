@@ -40,26 +40,6 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
         dl.addDrawerListener(t);
         t.syncState();
 
-        ArrayList<MyListData> listData = new ArrayList<>();
-
-        listData.add(new MyListData("MyTask","Me",1));
-        listData.add(new MyListData("MyTask2","Him",2));
-        listData.add(new MyListData("MyTask3","Her",3));
-        listData.add(new MyListData("MyTask4","We",4));
-        listData.add(new MyListData("MyTask5","You",5));
-
-
-        RecyclerView recyclerView = findViewById(R.id.tasks_recycler_view);
-
-        RecyclerView.LayoutManager layoutManager;
-
-
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        myAdapter = new MyListAdapter(listData);
-        recyclerView.setAdapter(myAdapter);
-
         NavigationView nv = findViewById(R.id.nv);
         nv.setNavigationItemSelectedListener(this);
 
@@ -71,7 +51,29 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
-        SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
+
+        setupRecyclerView();
+
+    }
+
+    private void setupRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.tasks_recycler_view);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+        ArrayList<MyListData> listData = new ArrayList<>();
+
+        listData.add(new MyListData("MyTask","Me",1));
+        listData.add(new MyListData("MyTask2","Him",2));
+        listData.add(new MyListData("MyTask3","Her",3));
+        listData.add(new MyListData("MyTask4","We",4));
+        listData.add(new MyListData("MyTask5","You",5));
+
+
+        myAdapter = new MyListAdapter(listData);
+        recyclerView.setAdapter(myAdapter);
+
+        swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
             public void onDeleteClicked(int position) {
                 myAdapter.listData.remove(position);
@@ -82,27 +84,6 @@ public class TasksActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onEditClicked(int position) {
                 super.onEditClicked(position);
-            }
-        });
-
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-        itemTouchhelper.attachToRecyclerView(recyclerView);
-        setupRecyclerView();
-
-    }
-
-    private void setupRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.tasks_recycler_view);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, recyclerView.VERTICAL, false));
-        recyclerView.setAdapter(myAdapter);
-
-        swipeController = new SwipeController(new SwipeControllerActions() {
-            @Override
-            public void onDeleteClicked(int position) {
-                myAdapter.listData.remove(position);
-                myAdapter.notifyItemRemoved(position);
-                myAdapter.notifyItemRangeChanged(position, myAdapter.getItemCount());
             }
         });
 

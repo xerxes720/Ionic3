@@ -21,7 +21,6 @@ enum ButtonsState {
 }
 
 public class SwipeController extends Callback {
-
     private boolean swipeBack = false;
 
     private ButtonsState buttonShowedState = ButtonsState.GONE;
@@ -173,13 +172,13 @@ public class SwipeController extends Callback {
         drawText("", c, rightButton3, p);
 
 
-        buttonInstance = null;
-        if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
-            buttonInstance = rightButton1;
-        }
-        else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
-            buttonInstance = rightButton2;
-        }
+//        buttonInstance = null;
+//        if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
+//            buttonInstance = rightButton1;
+//        }
+//        else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
+//            buttonInstance = rightButton2;
+//        }
     }
 
     private void drawText(String text, Canvas c, RectF button, Paint p) {
